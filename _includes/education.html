@@ -12,6 +12,9 @@
       <h4 class="degree">{{ graduation.degree }}</h4>
       <h5 class="meta">{{ graduation.university }}</h5>
       <div class="time">{{ graduation.time }}</div>
+      {% if graduation.grade %}
+      <div class="time">학점 {{ graduation.grade }}</div>
+      {% endif %}
     </div><!--//item-->
     {% endfor %}
 
@@ -38,6 +41,9 @@
         </div><!--//upper-row-->
 
         <div class="university">{{ graduation.university }}</div>
+        {% if graduation.grade %}
+        <div class="university">학점 {{ graduation.grade }}</div>
+        {% endif %}
       </div><!--//meta-->
 
       {% if graduation.details %}

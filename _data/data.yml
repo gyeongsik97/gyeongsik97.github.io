@@ -9,13 +9,13 @@ sidebar:
 
   # Profile information
   name: 윤경식
-  tagline: Backend Developer
-  avatar: # place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
+  tagline: 백엔드 개발자
+  avatar: id_photo.jpg # place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
 
   # Sidebar links
   email: gyeongsik97@gmail.com
-  phone: 010-7559-1248
-  timezone: Asia/Seoul # Enter your timezone, e.g., America/Havana, Africa/Casablanca, America/North_Dakota/Center
+  phone:
+  timezone:
   citizenship:
   website: # Include the full website URL, including "http://" or "https://".
   linkedin:
@@ -35,252 +35,134 @@ sidebar:
   pdf: # Add a PDF link here if you want to include a PDF custom version in your resume.
 
   languages:
-    title: Languages
+    title: 언어
     info:
-    - idiom: English
-      level: Native
-
-    - idiom: French
-      level: Professional
-
-    - idiom: Spanish
-      level: Professional
+    - idiom: 영어
+      level: 기술 문서 독해 가능
 
   interests:
-    title: Interests
+    title: 취미
     info:
-    - item: Climbing
+    - item: 야구
       link:
 
-
-    - item: Snowboarding
-      link:
-
-
-    - item: Cooking
+    - item: 배드민턴
       link:
 
 
 career-profile:
-  title: Career Profile
+  title: 소개
   summary: |
-    Summarise your career here lorem ipsum dolor sit amet, consectetuer
-    adipiscing elit. You can [download this free resume/CV template here]().
-    Aenean commodo ligula eget dolor aenean massa. Cum sociis natoque
-    penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-    Donec quam felis, ultricies nec, pellentesque eu.
-    Second paragraph if required.
+    Go를 주력으로 Kubernetes 및 OpenStack 기반 제품의 백엔드 개발을 담당해 왔습니다. DR 솔루션과 HCI 제품의 복제 작업 관리, 가상화·스토리지·고가용성 및 네트워크 기능 개발과 운영 안정성 개선을 주요 업무로 수행해 왔습니다.
+
+    사용자의 요구를 정확히 파악하는 것을 최우선으로 합니다. 기존 구현에 얽매이지 않고, 개선이 필요한 부분을 발견하면 더 나은 구조와 구현 방식을 검토하고 적용해 왔습니다. 궁극적으로는 사용자의 요구를 안정적이고 확장 가능한 구조로 구현할 수 있는 개발자로 성장하고자 합니다.
 education:
-  title: Education
+  title: 학력
   info:
-  - degree: MSc in Computer Science
-    university: University of London
-    time: 2011 - 2012
-    details: |
-      Describe your study here lorem ipsum dolor sit amet, consectetuer
-      adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-      sociis natoque penatibus et magnis dis parturient montes, nascetur
-      ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-      pretium quis, sem.
-        - Bullet point
-        - Bullet point
-  - degree: BSc in Applied Mathematics
-    university: Bristol University
-    time: 2007 - 2011
-    details: |
-      Describe your study here lorem ipsum dolor sit amet, consectetuer
-      adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-      sociis natoque penatibus et magnis dis parturient montes, nascetur
-      ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-      pretium quis, sem.
-        - Bullet point
-        - Bullet point
+  - degree: 컴퓨터공학과 (4년제)
+    university: 금오공과대학교
+    time: 2016.03 - 2022.02
+    grade: 3.7 / 4.5
+
+training:
+  title: 교육
+  info:
+  - course: 삼성 청년 SW 아카데미 (SSAFY)
+    institution: 삼성
+    time: 2022.01 - 2022.12
+
+military:
+  title: 병역
+  branch: 공군
+  rank: 병장
+  time: 2017.08 - 2019.07
+  discharge: 만기전역
 
 experiences:
-  title: Experiences
+  title: 경력
   info:
-  - role: Lead Developer
-    time: 2015 - Present
-    company: Startup Hubs, San Francisco
+  - role: 대리
+    time: 2025.07 - 현재
+    company: (주)파이오링크 · HCI 4팀
     details: |
-      Describe your role here lorem ipsum dolor sit amet, consectetuer
-      adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-      Cum sociis natoque penatibus et magnis dis parturient montes,
-      nascetur ridiculus mus. Donec quam felis, ultricies nec,
-      pellentesque eu, pretium quis, sem. Nulla consequat massa quis
-      enim. Donec pede justo. Sed ut perspiciatis unde omnis iste natus
-      error sit voluptatem accusantium doloremque laudantium, totam rem
-      aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-      architecto beatae vitae dicta sunt explicabo.
-        - Bullet point
-        - Bullet point
-  - role: Senior Software Engineer
-    time: 2014 - 2015
-    company: Google, London
+      OpenStack 기반 HCI 제품 백엔드 개발 및 운영 안정성 개선
+
+      - 담당 제품: POPCON HCI
+  - role: 연구원
+    time: 2023.01 - 2025.06
+    company: (주)데이타커맨드 · 개발 3팀
     details: |
-      Describe your role here lorem ipsum dolor sit amet, consectetuer
-      adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-      Cum sociis natoque penatibus et magnis dis parturient montes,
-      nascetur ridiculus mus. Donec quam felis, ultricies nec,
-      pellentesque eu, pretium quis, sem.
-        - Bullet point
-        - Bullet point
-  - role: UI Developer
-    time: 2012 - 2014
-    company: Amazon, London
-    details: |
-      Describe your role here lorem ipsum dolor sit amet, consectetuer
-      adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-      Cum sociis natoque penatibus et magnis dis parturient montes,
-      nascetur ridiculus mus. Donec quam felis, ultricies nec,
-      pellentesque eu, pretium quis, sem.
-        - Bullet point
-        - Bullet point
+      Kubernetes DR·OpenStack DR 제품 백엔드 및 VMware VM 마이그레이션 기능 개발과 안정성 개선
+
+      - 담당 제품: Kubernetes DR, OpenStack DR, VMware VM 마이그레이션
 
 certifications:
-  title: Certifications
+  title: 자격증
   list:
-  - name: CV Builder
-    start: 2020
-    end: 2021
-    organization: Microsoft
-    credentialid: 111-222
-    credentialurl: www.google.com
-    credentialname: Google
-    details: |
-      Details about cert. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit.
-      Nullam eget orci purus. Nullam ultrices neque nibh.
-      Aenean fermentum, felis vulputate suscipit accumsan,
-      sem enim bibendum augue, sed convallis arcu lacus at dui.
-      Pellentesque et nibh suscipit, vestibulum turpis eu, semper tortor.
-      Praesent felis nibh, eleifend id eleifend id, dictum id enim.
-      Praesent venenatis erat non augue suscipit consectetur.
-
-      Second paragraph. Sed eleifend enim ante, vitae efficitur purus
-      fringilla vel. Ut euismod, sem sed vulputate venenatis,
-      justo diam viverra velit, sed rhoncus leo leo eu justo.
-      Suspendisse placerat risus ante, sed porta nisi blandit at.
-  - name: Git learning
-    start: 2019
-    end:
-    organization: Microsoft
-    credentialid: 111-222
-    credentialurl: www.github.com
-    credentialname: Github
-    details: |
-      Older certification. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit.
-      Nullam eget orci purus. Nullam ultrices neque nibh.
-      Aenean fermentum, felis vulputate suscipit accumsan,
-      sem enim bibendum augue, sed convallis arcu lacus at dui.
-      Pellentesque et nibh suscipit, vestibulum turpis eu, semper tortor.
-      Praesent felis nibh, eleifend id eleifend id, dictum id enim.
-      Praesent venenatis erat non augue suscipit consectetur.
+  - name: 정보처리기사
+    start: 2021.11
+    organization: 한국산업인력공단
 
 projects:
-  title: Projects
-  intro: >
-    You can list your side projects in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
-  assignments:
-  - title: Velocity
-    link: "#hook"
-    tagline: "A responsive website template designed to help startups promote, market and sell their products."
+  title: 주요 업무 및 프로젝트
+  groups:
+  - name: POPCON HCI 개발 및 안정화
+    meta: (주)파이오링크 · 2025.07 - 현재
+    summary: >
+      OpenStack 기반 가상화·스토리지·고가용성 및 네트워크 기능 개발 및 안정성 개선
+    assignments:
+    - title: OpenStack 클러스터 간 VM 이관
+      details:
+      - Ceph RBD 스토리지를 사용하는 인스턴스의 클러스터 간 VM 이관 기능 개발
 
-  - title: DevStudio
-    link: "#"
-    tagline: "A responsive website template designed to help web developers/designers market their services."
+    - title: Cinder Local Attachment 및 다중 스토리지 지원
+      details:
+      - Cinder 볼륨을 지정 호스트의 블록 장치로 연결하는 관리자 API 및 에이전트 개발
+      - VMware·P2V 이관 대상을 RBD·Shared LUN·RDM으로 확장
 
-  - title: Tempo
-    link: "#"
-    tagline: "A responsive website template designed to help startups promote their products or services and to attract users &amp; investors"
+    - title: OpenStack HA 복구 안정화
+      details:
+      - Masakari·Nova·Cinder 장애 복구 경로의 고정 대기 및 RPC 라우팅 개선
+      - 메시지 큐 충돌 문제 해결
+      - 호스트 장애 검증에서 VM 통신 단절 1분 이내 확인
 
-  - title: Atom
-    link: "#"
-    tagline: "A comprehensive website template solution for startups/developers to market their mobile apps."
+    - title: 시스템 업데이트 시 네트워크 연속성 개선
+      details:
+      - OVS 재시작 복구와 Neutron L3·DHCP agent의 데이터 플레인 보존 개선
+      - 시스템 업데이트 과정의 패킷 단절 최소화
 
-  - title: Delta
-    link: "#"
-    tagline: "A responsive Bootstrap one page theme designed to help app developers promote their mobile apps"
+    - title: Dell Avamar 백업 연동
+      details:
+      - 인스턴스 단위 백업·복원 및 파일 단위 복원 기능 연동
+      - 기존 Dell Avamar 제품 버그 수정
+      - 배포 및 기능 사용 가이드 제공
 
-oss:
-  title: OSS Contributions
-  intro: >
-    You can list your open source software contributions in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
-  contributions:
-  - title: Tempo
-    link: "#"
-    tagline: "A responsive website template designed to help startups promote their products or services and to attract users &amp; investors"
+  - name: DR 솔루션 및 VMware 마이그레이션 백엔드 개발
+    meta: (주)데이타커맨드 · 2023.01 - 2025.06
+    summary: >
+      Kubernetes·OpenStack DR 솔루션과 VMware VM 마이그레이션 기능 개발 및 안정성 개선
+    assignments:
+    - title: VMware VM 증분 마이그레이션
+      details:
+      - CBT 기반 증분 복제 엔진 개발
+      - QoS·체크포인트 재개·작업 스케줄링 구현
 
-  - title: Atom
-    link: "#"
-    tagline: "A comprehensive website template solution for startups/developers to market their mobile apps."
+    - title: Kubernetes DR 솔루션
+      details:
+      - Kubernetes Operator 기반 복제 작업 관리 모듈 개발
 
-  - title: Delta
-    link: "#"
-    tagline: "A responsive Bootstrap one page theme designed to help app developers promote their mobile apps"
-
-publications:
-  title: Publications
-  intro: |
-    You can list your publications in this section. Lorem ipsum dolor sit
-    amet, consectetur adipiscing elit. Vestibulum et ligula in nunc
-    bibendum fringilla a eu lectus.
-  papers:
-  - title: The Art of Computer Programming
-    link: "#"
-    authors: Donald E. Knuth
-    conference: Addison-Wesley, 1968
-
-  - title: "Genetic Programming III: Darwinian Invention &amp; Problem Solving"
-    link: "#"
-    authors: Koza, J.R., Andre, D., Bennett, F.H., Keane, M.A.
-    conference: "Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edn. (1999)"
-
-  - title: A syntax directed compiler for Algol 60
-    link: "#"
-    authors: Edgar T. Irons
-    conference: "Comm. ACM 4 (1961), 51–55"
-
-recommendations:
-  title: Recommendations
-  list:
-  - person: Yareli Perez
-    email: perezyareli@example.com
-    phone: 012 345 6789
-    role: General Director at example.com
-    recommendation: |
-      Alan Doe is a super employee!
-  - person: Lara Henderson
-    email: larah@example.com
-    phone: 012 345 6789
-    role: General Director at example.com
-    recommendation: |
-      I would like to work with Alan Doe again!
-
-      He is a great employee!
+    - title: OpenStack DR 솔루션
+      details:
+      - 데몬 기반 복제 작업 관리 모듈 개발
 
 skills:
-  title: Skills &amp; Proficiency
+  title: 기술 스택
 
   toolset:
-  - name: Python & Django
-    level: 98%
-
-  - name: Javascript & jQuery
-    level: 98%
-
-  - name: Angular
-    level: 98%
-
-  - name: HTML5 & CSS
-    level: 95%
-
-  - name: Ruby on Rails
-    level: 85%
-
-  - name: Sketch & Photoshop
-    level: 60%
+  - category: 주력
+    items: Go
+  - category: 업무 경험
+    items: Linux · OpenStack · Kubernetes · Python
 
 footer: >
   Designed with <i class="fas fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">Xiaoying Riley</a>

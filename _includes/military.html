@@ -1,0 +1,13 @@
+{% assign military = site.data.data.military %}
+{% if military %}
+<div class="education-container container-block">
+  <h2 class="container-block-title">
+    {{ military.title }}
+  </h2>
+  <div class="item">
+    <h4 class="degree">{{ military.branch }} {{ military.rank }}</h4>
+    <h5 class="meta">{{ military.discharge }}</h5>
+    <div class="time">{{ military.time }}</div>
+  </div>
+</div>
+{% endif %}

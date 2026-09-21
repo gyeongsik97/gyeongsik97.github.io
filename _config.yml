@@ -1,7 +1,7 @@
 #Update all the sections by editing the data.yml file inside _data folder.
 
 # Site Settings
-title: 윤경식 | Backend Developer
+title: 윤경식 | 백엔드 개발자
 url: 'https://gyeongsik97.github.io'
 
 #change it according to your repository name
@@ -10,7 +10,7 @@ url: 'https://gyeongsik97.github.io'
 
 description: 백엔드 개발자 윤경식의 기술 경력서
 # Style will be applied only after restarting the build or serve. Just choose one of the options.
-theme_skin: blue # blue turquoise green berry orange ceramic teal oceanstale
+theme_skin: black # blue turquoise green berry orange ceramic teal oceanstale black
 chrome_mobile_color: #use hex colors (ex:#1976d2) or leave empty if you don't want a color for chrome mobile searchbar
 
 # Tracker
@@ -34,3 +34,12 @@ compress_html: # - http://jch.penibelst.de/
 port: 4000
 host: 0.0.0.0
 safe: false
+
+# Files used to manage the project, not content to publish
+exclude:
+  - docs/
+  - README.md
+  - LICENSE.md
+  - docker-compose.yml
+  - Gemfile
+  - Gemfile.lock

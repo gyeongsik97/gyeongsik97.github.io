@@ -227,11 +227,42 @@ p {
     color: darken($theme-color, 15%);
   }
   .projects-section {
-    .intro {
-      margin-bottom: 30px;
+    .project-group {
+      margin-bottom: 36px;
+    }
+    .project-group:last-child {
+      margin-bottom: 0;
+    }
+    .project-group-title {
+      margin-top: 0;
+      margin-bottom: 4px;
+      font-size: 20px;
+      font-weight: 500;
+      color: darken($theme-color, 15%);
+    }
+    .project-group-meta {
+      margin-bottom: 16px;
+      color: #777;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .project-group-summary {
+      margin-top: 0;
+      margin-bottom: 24px;
     }
     .item {
-      margin-bottom: 15px;
+      margin-bottom: 24px;
+      padding-left: 14px;
+      border-left: 2px solid lighten($theme-color, 35%);
+    }
+    .project-title {
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .project-details {
+      margin-bottom: 0;
+      padding-left: 20px;
+      line-height: 1.6;
     }
   }
   .oss-section {
@@ -267,20 +298,16 @@ p {
 .skillset {
   .item {
     margin-bottom: 15px;
-    overflow: hidden;
   }
-  .level-title {
+  .skill-category {
     font-size: 14px;
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
+    color: darken($theme-color, 15%);
+    font-weight: 500;
   }
-  .level-bar {
-    height: 12px;
-    background: $smoky-white;
-  }
-  .level-bar-inner {
-    height: 12px;
-    background: lighten($theme-color, 15%);
+  .skill-items {
+    margin-bottom: 0;
   }
 }
 

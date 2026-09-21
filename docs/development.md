@@ -1,25 +1,46 @@
-# 로컬 개발 환경 구성
+# 로컬 개발 가이드
 
-이 문서는 Windows WSL의 Ubuntu에서 `online-cv` 기반 Jekyll 사이트를 실행하고 브라우저로 확인하는 방법을 설명한다. 모든 명령은 Windows PowerShell이 아닌 **Ubuntu 터미널**에서 실행한다.
+이 문서는 Windows WSL 2의 Ubuntu에서 `online-cv` 기반 Jekyll 사이트를 개발하고, 로컬 테스트 페이지를 확인하는 방법을 설명한다. 명령은 Windows PowerShell이 아닌 **WSL Ubuntu 터미널**에서 실행한다.
 
-## 1. 저장소 위치 확인
+## 프로젝트 구성
 
-가능하면 저장소를 `/mnt/c` 아래가 아닌 WSL의 Linux 파일 시스템(예: `~/myrepos`)에 둔다. 파일 감시와 빌드 성능이 더 안정적이다.
+- 이력서 내용: `_data/data.yml`
+- 사이트 주소, 제목, 색상 테마: `_config.yml`
+- 페이지 구성: `_includes/`, `_layouts/`
+- 스타일: `_sass/`, `assets/css/`
+- 일반 페이지: `index.html`
+- 인쇄용 페이지: `print.html`
+- 정적 빌드 결과: `_site/`
+
+`_site/`은 Jekyll이 생성하는 결과물이므로 직접 수정하거나 Git에 커밋하지 않는다.
+
+## 빠른 실행
+
+최초 환경 설정을 완료한 뒤에는 다음 명령으로 개발 서버를 실행한다.
 
 ```bash
-cd ~/myrepos/gyeongsik97.github.io
+cd /home/user/myrepos/gyeongsik97.github.io
+bundle exec jekyll serve --livereload
+```
+
+Windows 브라우저에서 <http://localhost:4000>을 연다. 인쇄용 화면은 <http://localhost:4000/print>에서 확인한다. 종료할 때는 서버를 실행한 터미널에서 `Ctrl+C`를 누른다.
+
+## 최초 1회 환경 설정
+
+### 1. 저장소 위치
+
+파일 감시와 빌드 성능을 위해 저장소는 `/mnt/c`가 아닌 WSL의 Linux 파일 시스템에 둔다.
+
+```bash
+cd /home/user/myrepos/gyeongsik97.github.io
 pwd
 ```
 
-현재 저장소의 권장 위치는 다음과 같다.
+다른 위치에 저장소를 두었다면 이후 명령의 경로를 실제 위치로 바꾼다.
 
-```text
-/home/<사용자명>/myrepos/gyeongsik97.github.io
-```
+### 2. Ruby와 빌드 도구 설치
 
-## 2. Ruby와 빌드 도구 설치
-
-Ubuntu 패키지 목록을 갱신하고 Ruby, 헤더 파일 및 네이티브 gem 컴파일 도구를 설치한다.
+다음 명령은 `sudo` 비밀번호 입력이 필요하므로 WSL Ubuntu 터미널에서 직접 실행한다.
 
 ```bash
 sudo apt update
@@ -35,138 +56,177 @@ gcc --version
 make --version
 ```
 
-Jekyll의 현재 최소 요구사항에 맞춰 Ruby 2.7 이상을 사용한다. 아래 명령에서 `true`가 출력되어야 한다.
+각 명령이 버전을 출력해야 한다. Jekyll은 Ruby 2.7 이상을 요구한다.
+
+### 3. 사용자 전용 gem 실행 경로 설정
+
+Ruby gem은 시스템 경로에 `sudo`로 설치하지 않고 사용자 홈에 설치한다. 사용자용 gem 실행 파일을 찾을 수 있도록 아래 설정을 한 번만 실행한다.
 
 ```bash
-ruby -e 'puts Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.7")'
-```
-
-## 3. 사용자 전용 gem 경로 설정
-
-gem을 시스템 영역에 `sudo`로 설치하지 않는다. 사용자 홈 디렉터리에 설치되도록 Bash 환경을 한 번 설정한다.
-
-```bash
-echo '# User-installed Ruby gems' >> ~/.bashrc
-echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
-echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+grep -qxF '# User-installed Ruby executables' ~/.bashrc || printf '%s\n' \
+  '# User-installed Ruby executables' \
+  'export PATH="$(ruby -r rubygems -e '\''puts Gem.user_dir'\'')/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-적용 여부를 확인한다.
+설정 결과를 확인한다.
 
 ```bash
-gem env home
+ruby -r rubygems -e 'puts Gem.user_dir'
 ```
 
-결과는 `/home/<사용자명>/gems` 형태여야 한다.
+`/home/<사용자명>/.local/share/gem/ruby/<Ruby API 버전>` 형식의 경로가 출력되어야 한다.
 
-## 4. Bundler와 프로젝트 의존성 설치
-
-Bundler를 설치한 다음 저장소에 선언된 gem을 설치한다. Jekyll은 프로젝트 의존성에 포함되므로 별도로 전역 설치할 필요가 없다.
+### 4. Bundler와 프로젝트 의존성 설치
 
 ```bash
-gem install bundler
-cd ~/myrepos/gyeongsik97.github.io
+gem install bundler --user-install
+cd /home/user/myrepos/gyeongsik97.github.io
 bundle install
 ```
 
-설치가 끝나면 다음 명령으로 버전을 확인한다.
+Jekyll은 프로젝트의 `Gemfile`에 포함되어 있으므로 별도로 `gem install jekyll`을 실행하지 않는다. 설치를 확인한다.
 
 ```bash
 bundle exec jekyll --version
 ```
 
-`Gemfile.lock`이 생성되면 커밋한다. 이 파일은 모든 개발 환경에서 동일한 gem 버전을 사용하게 해준다.
+## 로컬 테스트 페이지 실행
 
-## 5. 로컬 페이지 실행
-
-저장소 루트에서 개발 서버를 실행한다.
+저장소 루트에서 다음 명령을 실행한다.
 
 ```bash
+cd /home/user/myrepos/gyeongsik97.github.io
 bundle exec jekyll serve --livereload
 ```
 
-터미널에 `Server address`가 표시되면 Windows 브라우저에서 다음 주소를 연다.
+다음과 비슷한 메시지가 나오면 실행된 것이다.
 
 ```text
-http://localhost:4000
+Server address: http://127.0.0.1:4000/
+Server running... press ctrl-c to stop.
 ```
 
-WSL 2의 localhost 전달 기능을 통해 일반적으로 Windows 브라우저에서 바로 접속할 수 있다. 서버는 터미널에서 `Ctrl+C`를 눌러 종료한다.
+Windows 브라우저에서 다음 주소를 연다.
 
-SCSS, HTML, Markdown 등의 변경은 자동으로 다시 빌드된다. `_config.yml` 변경이 반영되지 않으면 서버를 종료한 뒤 다시 실행한다.
+- 일반 페이지: <http://localhost:4000>
+- 인쇄용 페이지: <http://localhost:4000/print>
 
-이력서 내용은 `_data/data.yml`에서 관리한다. 사이트 제목, 주소, 색상 테마 같은 전역 설정은 `_config.yml`에서 관리한다.
+WSL 2의 localhost 전달 기능을 통해 Windows 브라우저에서 바로 접속할 수 있다. 서버는 실행한 터미널에서 `Ctrl+C`를 눌러 종료한다.
 
-다른 기기에서도 접속해야 할 때만 다음과 같이 모든 인터페이스에 바인딩한다.
+`_data/data.yml`, HTML, SCSS 변경은 자동으로 다시 빌드되고 브라우저가 새로고침된다. `_config.yml` 변경은 서버를 종료한 뒤 다시 실행해야 확실하게 반영된다.
+
+## 터미널에서 동작 확인
+
+개발 서버가 실행 중인 상태에서 새 WSL 터미널을 열고 다음 명령을 실행한다.
+
+```bash
+curl --fail --head http://localhost:4000
+curl --fail --head http://localhost:4000/print
+```
+
+두 명령 모두 `HTTP/1.1 200 OK`를 반환하면 정상이다.
+
+## 배포 전 검사
+
+개발 서버를 `Ctrl+C`로 종료한 뒤 production 환경으로 정적 사이트를 빌드한다.
+
+```bash
+cd /home/user/myrepos/gyeongsik97.github.io
+bundle exec jekyll clean
+JEKYLL_ENV=production bundle exec jekyll build
+```
+
+오류 없이 `_site/`이 생성되면 배포 가능한 상태다. 생성물을 실제 서버 방식으로 확인하려면 다음 명령을 사용한다.
+
+```bash
+JEKYLL_ENV=production bundle exec jekyll serve --no-watch
+```
+
+Windows 브라우저에서 <http://localhost:4000>을 확인하고 `Ctrl+C`로 종료한다.
+
+## 평소 작업 순서
+
+환경 설정을 마친 뒤에는 다음 흐름만 반복한다.
+
+```bash
+cd /home/user/myrepos/gyeongsik97.github.io
+bundle exec jekyll serve --livereload
+```
+
+1. `_data/data.yml`에서 경력서 내용을 수정한다.
+2. <http://localhost:4000>에서 일반 화면을 확인한다.
+3. <http://localhost:4000/print>에서 인쇄 화면을 확인한다.
+4. 서버를 종료하고 production 빌드를 검사한다.
+5. 변경 내용을 커밋하고 GitHub에 push한다.
+
+## 외부 기기에서 접속
+
+같은 네트워크의 다른 기기에서 확인할 필요가 있을 때만 모든 네트워크 인터페이스에 서버를 연다.
 
 ```bash
 bundle exec jekyll serve --livereload --host 0.0.0.0
 ```
 
-이 경우 Windows 방화벽과 네트워크 노출 범위를 별도로 확인해야 한다.
-
-## 6. 배포 전 빌드 확인
-
-개발 서버가 아닌 실제 정적 사이트 빌드가 성공하는지 검사한다.
+WSL IP는 다음 명령으로 확인한다.
 
 ```bash
-JEKYLL_ENV=production bundle exec jekyll build
+hostname -I
 ```
 
-생성 결과는 `_site/`에 저장된다. `_site/`는 빌드 산출물이므로 직접 수정하거나 Git에 커밋하지 않는다.
+이 방식은 Windows 방화벽 설정이 추가로 필요할 수 있으며 로컬 네트워크에 개발 서버가 노출된다. 일반 개발에서는 기본 localhost 실행을 사용한다.
 
-빌드 산출물까지 로컬 서버로 확인하려면 다음 명령을 사용할 수 있다.
-
-```bash
-bundle exec jekyll serve --detach
-```
-
-일반적인 개발에서는 종료가 명확한 `bundle exec jekyll serve --livereload` 사용을 권장한다.
-
-## 7. 자주 발생하는 문제
+## 문제 해결
 
 ### `ruby: command not found`
 
-Ruby 설치 단계가 완료되지 않은 상태다.
-
 ```bash
+sudo apt update
 sudo apt install -y ruby-full build-essential zlib1g-dev
 ```
 
 ### `bundle: command not found`
 
-새 터미널을 열거나 `source ~/.bashrc`를 실행한 뒤 Bundler를 다시 설치한다.
+먼저 사용자용 gem 실행 경로가 등록되어 있는지 확인한다.
 
 ```bash
+grep -F 'Gem.user_dir' ~/.bashrc
+```
+
+아무 내용도 출력되지 않으면 다음 설정을 추가한다.
+
+```bash
+printf '%s\n' \
+  '# User-installed Ruby executables' \
+  'export PATH="$(ruby -r rubygems -e '\''puts Gem.user_dir'\'')/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
-gem install bundler
+```
+
+Bundler가 아직 설치되지 않은 경우에만 설치하고 버전을 확인한다.
+
+```bash
+gem install bundler --user-install
+bundle --version
 ```
 
 ### `Could not locate Gemfile`
 
-저장소 루트가 아닌 곳에서 실행한 경우다.
+저장소 루트로 이동한 뒤 실행한다.
 
 ```bash
-cd ~/myrepos/gyeongsik97.github.io
+cd /home/user/myrepos/gyeongsik97.github.io
 bundle install
 ```
 
 ### `cannot load such file -- webrick`
 
-먼저 의존성을 다시 설치한다.
+현재 프로젝트는 `webrick`을 의존성으로 포함한다. 의존성을 다시 설치한다.
 
 ```bash
 bundle install
 ```
 
-그래도 같은 오류가 발생하면 Webrick을 프로젝트 의존성에 추가한다.
-
-```bash
-bundle add webrick
-```
-
-### `Address already in use` 또는 4000번 포트 충돌
+### 4000번 포트가 이미 사용 중임
 
 다른 포트로 실행한다.
 
@@ -174,29 +234,34 @@ bundle add webrick
 bundle exec jekyll serve --livereload --port 4001
 ```
 
-브라우저에서는 `http://localhost:4001`로 접속한다.
+브라우저에서는 <http://localhost:4001>로 접속한다.
 
-### 변경 내용이 화면에 반영되지 않음
+### 변경 내용이 반영되지 않음
 
-`_config.yml`을 수정했다면 서버를 재시작한다. 그 외 파일이라면 강력 새로고침(`Ctrl+F5`) 후에도 해결되지 않을 때 캐시 없이 다시 빌드한다.
+서버를 종료한 뒤 캐시와 빌드 결과를 정리하고 다시 실행한다.
 
 ```bash
 bundle exec jekyll clean
 bundle exec jekyll serve --livereload
 ```
 
-## 8. 의존성 업데이트
+브라우저에서도 `Ctrl+F5`로 강력 새로고침한다.
 
-의존성 업데이트는 사이트 표시 결과가 바뀔 수 있으므로 별도 작업으로 진행한다. 업데이트 후에는 반드시 로컬 서버와 production 빌드를 모두 확인한다.
+### 의존성 설치 또는 빌드 오류
+
+먼저 설치 도구와 현재 상태를 기록한다.
 
 ```bash
-bundle update github-pages
-bundle exec jekyll serve --livereload
-JEKYLL_ENV=production bundle exec jekyll build
+ruby --version
+gem --version
+bundle --version
+bundle env
 ```
+
+`Gemfile.lock`을 임의로 삭제하기 전에 오류 메시지와 위 정보를 확인한다. 의존성 전체 업데이트는 사이트 결과가 달라질 수 있으므로 별도 변경으로 진행한다.
 
 ## 참고 문서
 
 - [Jekyll의 Ubuntu 설치 안내](https://jekyllrb.com/docs/installation/ubuntu/)
 - [GitHub Pages 사이트를 로컬에서 테스트하기](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
-- [GitHub Pages gem](https://github.com/github/pages-gem)
+- [online-cv 원본 저장소](https://github.com/sharu725/online-cv)

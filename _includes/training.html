@@ -1,0 +1,15 @@
+{% assign training = site.data.data.training %}
+{% if training %}
+<div class="education-container container-block">
+  <h2 class="container-block-title">
+    {{ training.title }}
+  </h2>
+  {% for item in training.info %}
+  <div class="item">
+    <h4 class="degree">{{ item.course }}</h4>
+    <h5 class="meta">{{ item.institution }}</h5>
+    <div class="time">{{ item.time }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

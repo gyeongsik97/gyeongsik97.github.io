@@ -10,28 +10,39 @@
     {{ projects.title }}
   </h2>
 
-  {% if projects.intro %}
-  <div class="intro">
-      <p>{{ projects.intro }}</p>
-  </div><!--//intro-->
-  {% endif %}
+  {% for group in projects.groups %}
+  <div class="project-group">
+    <h3 class="project-group-title">{{ group.name }}</h3>
+    {% if group.meta %}
+    <div class="project-group-meta">{{ group.meta }}</div>
+    {% endif %}
+    {% if group.summary %}
+    <p class="project-group-summary">{{ group.summary }}</p>
+    {% endif %}
 
-  {% for project in projects.assignments %}
+  {% for project in group.assignments %}
     <div class="item">
 
-      <span class="project-title">
+      <h4 class="project-title">
         {% if project.link %}
         <a href="{{ project.link }}" target="_blank">{{ project.title }}</a>
         {% else %}
         {{ project.title }}
         {% endif %}
-      </span>
+      </h4>
 
-      {% if project.tagline %}
-      - <span class="project-tagline">{{ project.tagline }}</span>
+      {% if project.details %}
+      <ul class="project-details">
+        {% for detail in project.details %}
+        <li>{{ detail }}</li>
+        {% endfor %}
+      </ul>
       {% endif %}
 
     </div><!--//item-->
+  {% endfor %}
+
+  </div><!--//project-group-->
   {% endfor %}
 
 </section><!--//section-->
