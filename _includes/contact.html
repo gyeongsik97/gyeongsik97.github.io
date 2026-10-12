@@ -1,0 +1,8 @@
+<ul class="contact-list">
+  {% if profile.email %}
+  <li><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>
+  {% endif %}
+  {% if profile.github %}
+  <li><a href="https://github.com/{{ profile.github }}" target="_blank" rel="noopener">GitHub · {{ profile.github }}</a></li>
+  {% endif %}
+</ul>

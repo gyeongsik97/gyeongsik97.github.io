@@ -1,0 +1,7 @@
+{% assign introduction = site.data.data.career-profile %}
+{% if introduction %}
+<section class="section summary-section" id="introduction">
+  <h2 class="section-title">{{ introduction.title | escape }}</h2>
+  <div class="summary">{{ introduction.summary | markdownify }}</div>
+</section>
+{% endif %}

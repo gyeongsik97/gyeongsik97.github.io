@@ -1,0 +1,119 @@
+// Shared document typography for the website and print/PDF view.
+@mixin resume-document {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+
+  .main-wrapper .section-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: #22272c;
+    padding-bottom: 18px;
+    border-bottom: 2px solid #30363c;
+    margin: 0 0 26px;
+    line-height: 1.4;
+  }
+  .main-wrapper .upper-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
+  .main-wrapper .job-title, .main-wrapper .cert-title { font-size: 18px; font-weight: 700; }
+  .main-wrapper .time { font-size: 13px; margin: 0; }
+  .main-wrapper .company { margin: 6px 0 16px; }
+  .experiences-section .item + .item { padding-top: 24px; border-top: 1px solid #e5e7ea; }
+  .experiences-section .item:last-child { margin-bottom: 0; }
+  .details p { line-height: 1.75; }
+  .details ul { padding-left: 20px; }
+  .projects-section .project-group-header { margin-bottom: 32px; }
+  .projects-section .project-group-title { font-size: 21px; font-weight: 700; line-height: 1.5; }
+  .projects-section .project-group-meta { margin: 6px 0 12px; font-size: 13px; }
+  .projects-section .project-title { font-size: 18px; }
+  .projects-section .project-detail-section { display: grid; grid-template-columns: 94px minmax(0, 1fr); gap: 12px; }
+  .projects-section .project-detail-label { padding-top: 2px; font-size: 13px; }
+  .projects-section .project-details { line-height: 1.8; }
+  .projects-section .item:last-child { margin-bottom: 0; }
+}
+
+.print-page { @include resume-document; }
+
+@media screen {
+  .resume-page {
+    @include resume-document;
+    background: #f3f4f5;
+    padding: 48px 24px;
+
+    .resume-shell { max-width: 1120px; margin: 0 auto; }
+    .resume-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 32px 36px;
+      background: #fff;
+      border-top: 5px solid #2f3337;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    .resume-identity { display: flex; align-items: center; gap: 24px; min-width: 0; }
+    .resume-photo { width: 88px; height: 110px; object-fit: cover; border-radius: 6px; }
+    .resume-header h1 { margin: 0 0 4px; font-size: 32px; font-weight: 700; color: #22272c; }
+    .resume-role { margin: 0 0 10px; font-size: 17px; color: #555d65; }
+    .contact-list { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 0; font-size: 13px; }
+    .action-buttons { flex-shrink: 0; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #555; outline-offset: 4px; }
+    .wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      align-items: start;
+      gap: 24px;
+    }
+    .main-wrapper {
+      min-width: 0;
+    }
+    .main-wrapper .section {
+      padding: 32px;
+      margin-bottom: 24px;
+      border: 1px solid #e0e3e6;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .summary p { line-height: 1.85; margin-bottom: 16px; }
+    .summary p:last-child { margin-bottom: 0; }
+    .skillset { display: flex; flex-wrap: wrap; gap: 20px 40px; }
+    .skillset .item { margin: 0; }
+    .sidebar-wrapper .container-block {
+      padding: 22px;
+      margin-bottom: 16px;
+      background: #fff;
+      border: 1px solid #e0e3e6;
+      border-radius: 8px;
+    }
+    .sidebar-wrapper .container-block-title { font-size: 16px; color: #22272c; padding-bottom: 12px; border-bottom: 1px solid #e5e7ea; }
+    .sidebar-wrapper .degree { line-height: 1.6; font-weight: 600; }
+    .sidebar-wrapper .education-container .meta,
+    .sidebar-wrapper .education-container .time,
+    .sidebar-wrapper .languages-container .lang-desc { color: #777; line-height: 1.7; font-weight: 400; }
+    .sidebar-wrapper a { color: #3f4650; }
+    .sidebar-wrapper .lang-desc { display: block; }
+  }
+
+  @media (max-width: 1000px) {
+    .resume-page .wrapper { grid-template-columns: minmax(0, 1fr); }
+    .resume-page .sidebar-wrapper { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .resume-page .sidebar-wrapper .container-block { margin: 0; }
+  }
+  @media (max-width: 600px) {
+    .resume-page {
+      padding: 16px 12px;
+      .resume-header { padding: 24px 20px; flex-wrap: wrap; }
+      .resume-identity { gap: 16px; }
+      .resume-photo { width: 64px; height: 80px; }
+      .resume-header h1 { font-size: 27px; }
+      .contact-list { display: block; font-size: 12px; }
+      .main-wrapper .section { padding: 24px 20px; }
+      .main-wrapper .section-title { font-size: 23px; }
+      .projects-section .project-detail-section { display: block; }
+      .projects-section .project-detail-label { margin-bottom: 6px; }
+      .sidebar-wrapper { grid-template-columns: minmax(0, 1fr); }
+    }
+  }
+}

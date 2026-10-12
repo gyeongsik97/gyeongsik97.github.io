@@ -1,0 +1,36 @@
+// Physical sheets carry their own repeated padding. No page margin is left
+// for the browser's automatic date/title/URL/page-number headers and footers.
+.print-page {
+  background: #e9ebed;
+  padding: 24px 0;
+  .print-controls { max-width: 210mm; margin: 0 auto 20px; padding: 0 16px; }
+  .print-controls p { margin-top: 10px; font-size: 13px; }
+  #print-source { width: 186mm; margin: 0 auto; }
+  .print-sheet {
+    width: 210mm;
+    height: 297mm;
+    padding: 12mm;
+    margin: 0 auto 24px;
+    background: white;
+    box-shadow: 0 2px 8px #0002;
+  }
+  .print-sheet-content { height: 100%; display: flow-root; }
+  .print-sheet .section { margin: 0; display: flow-root; }
+  .print-sheet .projects-section .item { margin: 0; padding: 0; display: flow-root; }
+  .print-sheet .projects-section .item + .item { margin-top: 28px; }
+  .print-sheet .experiences-section .item:last-child { margin-bottom: 0; }
+}
+@media print {
+  @page { size: A4; margin: 0; }
+  html, body.print-page { margin: 0; padding: 0; background: #fff; }
+  .print-page .print-controls, .print-page noscript { display: none; }
+  .print-page .print-sheet {
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+    break-inside: avoid;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .print-page .print-sheet:last-child { break-after: auto; }
+}

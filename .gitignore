@@ -1,0 +1,13 @@
+# Cache
+vendor/
+.bundle/
+_site/
+.sass-cache/
+.jekyll-metadata
+.jekyll-cache
+
+# Windows download metadata copied into WSL
+*:Zone.Identifier
+
+# Docs
+docs

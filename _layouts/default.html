@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% include head.html %}
+<body class="resume-page">
+  {% assign profile = site.data.data.profile %}
+  <div class="resume-shell">
+    <header class="resume-header">
+      <div class="resume-identity">
+        {% if profile.avatar %}
+        <img class="resume-photo" src="{{ '/assets/images/' | append: profile.avatar | relative_url }}" alt="{{ profile.name }} 프로필 사진">
+        {% endif %}
+        <div>
+          <h1>{{ profile.name }}</h1>
+          <p class="resume-role">{{ profile.tagline }}</p>
+          {% include contact.html %}
+        </div>
+      </div>
+      <div class="action-buttons">
+        <a class="action-button" href="{{ '/print' | relative_url }}?dialog=1" target="_blank" rel="noopener">인쇄</a>
+        <a class="action-button" href="{{ '/print' | relative_url }}?dialog=1" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </header>
+    <div class="wrapper">
+      <main class="main-wrapper">{{ content }}</main>
+      <aside aria-label="학력 및 기타 정보">{% include sidebar.html %}</aside>
+    </div>
+  </div>
+</body>
+</html>

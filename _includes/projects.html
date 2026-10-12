@@ -1,0 +1,35 @@
+{% assign projects = site.data.data.projects %}
+{% if projects %}
+<section class="section projects-section" id="projects">
+  <h2 class="section-title">{{ projects.title | escape }}</h2>
+  {% for group in projects.groups %}
+  <div class="project-group">
+    <header class="project-group-header">
+      <h3 class="project-group-title">{{ group.name | escape }}</h3>
+      {% if group.meta %}
+      <div class="project-group-meta">{{ group.meta | escape }}</div>
+      {% endif %}
+    </header>
+    {% for project in group.assignments %}
+    <div class="item">
+      <h4 class="project-title">{{ project.title | escape }}</h4>
+      <dl class="project-details">
+        {% for section in project.sections %}
+        <div class="project-detail-section">
+          <dt class="project-detail-label">{{ section.label | escape }}</dt>
+          <dd>
+            <ul>
+              {% for item in section.items %}
+              <li>{{ item | escape }}</li>
+              {% endfor %}
+            </ul>
+          </dd>
+        </div>
+        {% endfor %}
+      </dl>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</section>
+{% endif %}

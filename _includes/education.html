@@ -1,0 +1,14 @@
+{% assign education = site.data.data.education %}
+{% if education %}
+<section class="education-container container-block">
+  <h2 class="container-block-title">{{ education.title }}</h2>
+  {% for graduation in education.info %}
+  <div class="item">
+    <h3 class="degree">{{ graduation.degree }}</h3>
+    <p class="meta">{{ graduation.university }}</p>
+    <div class="time">{{ graduation.time }}</div>
+    {% if graduation.grade %}<div class="time">학점 {{ graduation.grade }}</div>{% endif %}
+  </div>
+  {% endfor %}
+</section>
+{% endif %}

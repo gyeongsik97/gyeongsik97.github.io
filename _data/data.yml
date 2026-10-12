@@ -1,0 +1,158 @@
+profile:
+  name: 윤경식
+  tagline: 백엔드 개발자
+  avatar: id_photo.jpg
+  email: gyeongsik97@gmail.com
+  github: gyeongsik97
+
+languages:
+  title: 언어
+  info:
+  - idiom: 영어
+    level: 기술 문서 독해 가능
+
+interests:
+  title: 취미
+  info:
+  - item: 야구
+  - item: 배드민턴
+
+career-profile:
+  title: 소개
+  summary: |
+    Go를 주력으로 Kubernetes 및 OpenStack 기반 제품의 백엔드 개발을 담당해 왔습니다. DR 솔루션의 복제 정책 관리 모듈 유지보수와 VM 마이그레이션을 위한 볼륨 복제 기능 개발을 수행했습니다. 이후 HCI 제품의 가상화·스토리지·고가용성·네트워크 기능 개발과 운영 안정성 개선을 담당했습니다.
+
+    사용자의 요구를 정확히 파악하는 것을 최우선으로 합니다. 기존 구현에 얽매이지 않고, 개선이 필요한 부분을 발견하면 더 나은 구조와 구현 방식을 검토하고 적용해 왔습니다. 궁극적으로는 사용자의 요구를 안정적이고 확장 가능한 구조로 구현할 수 있는 개발자로 성장하고자 합니다.
+education:
+  title: 학력
+  info:
+  - degree: 컴퓨터공학과 (4년제)
+    university: 금오공과대학교
+    time: 2016.03 - 2022.02
+    grade: 3.7 / 4.5
+
+training:
+  title: 교육
+  info:
+  - course: 삼성 청년 SW 아카데미 (SSAFY)
+    institution: 삼성
+    time: 2022.01 - 2022.12
+
+military:
+  title: 병역
+  branch: 공군
+  rank: 병장
+  time: 2017.08 - 2019.07
+  discharge: 만기전역
+
+experiences:
+  title: 경력
+  info:
+  - role: 대리
+    time: 2025.07 - 2026.10
+    company: (주)파이오링크 · HCI 4팀
+    details: |
+      HCI 제품 백엔드 개발 및 운영 안정성 개선
+
+  - role: 연구원
+    time: 2023.01 - 2025.06
+    company: (주)데이타커맨드 · 개발 3팀
+    details: |
+      VMware → OpenStack VM 마이그레이션을 위한 볼륨 증분 복제 기능 전담 개발 및 Kubernetes·OpenStack DR 솔루션의 복제 정책 관리 모듈 유지보수
+
+certifications:
+  title: 자격증
+  list:
+  - name: 정보처리기사
+    start: 2021.11
+    organization: 한국산업인력공단
+
+projects:
+  title: 주요 업무 및 프로젝트
+  groups:
+  - name: POPCON HCI 개발 및 안정화
+    meta: (주)파이오링크 · 2025.07 - 2026.10
+    assignments:
+    - title: 클러스터 간 VM 이관
+      sections:
+      - label: 개요
+        items:
+        - 서로 다른 POPCON 클러스터 간 VM 및 볼륨 이관 기능 개발
+      - label: 주요 수행 내용
+        items:
+        - 클러스터 간 이관 작업 관리를 위한 API 및 데이터 스키마 개선
+        - Ceph RBD 스냅샷 기반 초기·증분 복제, gRPC 스트리밍을 통한 대상 볼륨 데이터 기록 및 복제 완료 후 VM 생성 흐름 구현
+
+    - title: 호스트 볼륨 연결 및 다중 스토리지 지원
+      sections:
+      - label: 개요
+        items:
+        - 고객의 스토리지 구성에 맞춰 Ceph 외에 SAN 스토리지로도 VM을 이관할 수 있도록 지원 범위 확대
+      - label: 주요 수행 내용
+        items:
+        - VM 생성 전 대상 볼륨을 이관 호스트의 블록 장치로 연결하는 API 및 에이전트 개발
+        - 스토리지 유형별 볼륨 연결 방식을 적용하여 VMware·P2V 이관 시 RBD·Shared LUN·RDM 지원
+
+    - title: VM 고가용성(HA) 복구 안정화
+      sections:
+      - label: 개요
+        items:
+        - 호스트 장애 후 VM 복구 지연으로 인한 서비스 중단 시간 단축
+      - label: 주요 수행 내용
+        items:
+        - 호스트 장애 판단과 VM 대피 흐름을 개선하여 180초의 고정 대기 시간 제거
+        - 장애 호스트로 향하던 볼륨 연결 요청이 정상 동작 중인 볼륨 관리 서비스로 전달되도록 RPC 라우팅 개선
+        - RPC 응답 큐 충돌로 인한 호출 실패를 메시징 라이브러리 수정 버전 적용 및 서비스별 응답 큐 분리로 해결
+      - label: 결과
+        items:
+        - VM 통신 중단 시간 1분 이내 달성 (호스트 종료 및 VM 대피 시험 기준)
+
+    - title: 시스템 업데이트 시 네트워크 연속성 개선
+      sections:
+      - label: 개요
+        items:
+        - 시스템 업데이트 중 네트워크 구성 요소 재시작에 따른 VM 통신 단절 최소화
+      - label: 주요 수행 내용
+        items:
+        - OVS 재시작 감지와 네트워크 복구 절차를 개선하고, 복구 실패 시 재시도 처리 보완
+        - OVS 컨트롤러 연결이 끊겨도 기존 플로우 규칙을 유지하도록 설정 개선
+        - 라우팅·DHCP 에이전트와 데이터 플레인 프로세스의 수명주기를 분리하여 에이전트 재시작 시 통신 경로와 네트워크 규칙 보존
+
+    - title: Dell Avamar 백업 연동
+      sections:
+      - label: 개요
+        items:
+        - POPCON HCI에서 Dell Avamar를 활용한 인스턴스 백업·복원 및 파일 단위 복원 기능 연동
+      - label: 주요 수행 내용
+        items:
+        - Dell DPE 기반 백업·복원 연동과 제품 설정·배포 API 개발
+        - HTTPS 연동과 파일시스템 마운트 과정의 호환성 문제 수정
+        - libguestfs를 활용한 NTFS·EXT4·XFS 파일시스템의 파일 단위 복원 환경 구성
+        - 배포 및 기능 사용 가이드 작성, 고객 현장 지원
+
+  - name: VMware 마이그레이션 개발 및 DR 복제 정책 관리 모듈 유지보수
+    meta: (주)데이타커맨드 · 2023.01 - 2025.06
+    assignments:
+    - title: VMware → OpenStack VM 마이그레이션
+      sections:
+      - label: 개요
+        items:
+        - VMware VM의 OpenStack 이관을 위한 볼륨 증분 복제 기능 개발
+      - label: 주요 수행 내용
+        items:
+        - VDDK와 스냅샷·변경 블록 추적(CBT)을 활용하여 소스 VM에 연결된 볼륨을 OpenStack 볼륨으로 증분 복제하는 기능 전담 개발
+
+    - title: Kubernetes·OpenStack DR 복제 정책 관리
+      sections:
+      - label: 개요
+        items:
+        - DR 솔루션의 제어 서비스(Control Plane)와 자사 실시간 데이터 복제 솔루션 사이에서 복제 정책을 관리하는 모듈 유지보수
+
+skills:
+  title: 기술 스택
+
+  toolset:
+  - category: 주력
+    items: Go
+  - category: 업무 경험
+    items: Linux · OpenStack · Kubernetes · Python

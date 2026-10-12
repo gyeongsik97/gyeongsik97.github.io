@@ -1,0 +1,17 @@
+title: 윤경식 | 백엔드 개발자
+description: 백엔드 개발자 윤경식의 기술 경력서
+url: https://gyeongsik97.github.io
+baseurl: ""
+encoding: utf-8
+sass:
+  sass_dir: _sass
+  style: compressed
+host: 127.0.0.1
+port: 4000
+exclude:
+  - docs/
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts/
+  - vendor/
